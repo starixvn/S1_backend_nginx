@@ -11,7 +11,7 @@ services:
     volumes:
       - /nginx:/etc/nginx
       - /usr/share/GeoIP:/usr/share/GeoIP
-      - /var/www/Admin/PRD/
+      - /var/www/Admin/PRD/:/var/www/Admin/PRD/
       - /var/www/Admin/Release/:/var/www/Admin/Release/
 
 
