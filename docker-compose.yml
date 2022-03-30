@@ -1,17 +1,26 @@
 ---
+
+version: '3'
+
 services:
   nginx:
     image: nginx:1.18.0
-    
+    networks:
+      - nginx-net
     ports:
       - "5071:5071"
       - "7791:7791"
 
     volumes:
-      - /nginx:/etc/nginx
-      - /usr/share/GeoIP:/usr/share/GeoIP
-      - /var/www/Admin/PRD:/var/www/Admin/PRD
-      - /var/www/Admin/Release:/var/www/Admin/Release
+      - nginx:/etc/nginx
+      - GeoIP:/usr/share/GeoIP
+      - www:/var/www/
 
+networks:
+  nginx-net:
+    driver: bridge
 
-
+volumes:
+  nginx:
+  GeoIP:
+  www:
