@@ -1,0 +1,18 @@
+---
+services:
+  nginx:
+    image: nginx:1.18.0
+    ports:
+      - "80:80"
+      - "7789:7789"
+      - "5071:5071"
+      - "7791:7791"
+
+    volumes:
+      - /nginx:/etc/nginx
+      - /usr/share/GeoIP:/usr/share/GeoIP
+      - /var/www/Admin/PRD/
+      - /var/www/Admin/Release/:/var/www/Admin/Release/
+
+
+
