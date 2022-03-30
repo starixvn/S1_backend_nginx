@@ -4,6 +4,7 @@ version: '3'
 
 services:
   nginx:
+    container_name: nginx
     image: nginx:1.18.0
     networks:
       - nginx-net
@@ -12,15 +13,11 @@ services:
       - "7791:7791"
 
     volumes:
-      - nginx:/etc/nginx
-      - GeoIP:/usr/share/GeoIP
-      - www:/var/www/
-
+      - /etc/nginx:/etc/nginx
+      - /usr/share/GeoIP:/usr/share/GeoIP
+      - /var/www/:/var/www/
+    restart: alway
+    
 networks:
   nginx-net:
     driver: bridge
-
-volumes:
-  nginx:
-  GeoIP:
-  www:
