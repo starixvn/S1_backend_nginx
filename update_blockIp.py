@@ -5,8 +5,8 @@ from os.path import exists
 
 def check_checksum():
 
-    remote_url = 'https://ailab-config.s3.ap-southeast-1.amazonaws.com/blockIp_test.txt'
-    blockip = 'blockIp.txt'
+    remote_url = 'https://ailab-config.s3.ap-southeast-1.amazonaws.com/geoblockIp_test.txt'
+    blockip = 'geoblockIp_test.txt'
     request.urlretrieve(remote_url, blockip)
     md5_hash = hashlib.md5()
 
@@ -30,10 +30,10 @@ def check_checksum():
 
 def update_block_ip():
 
-    with open('blockIp.txt', 'r') as txt:
-        with open('./conf/sites-multiple/maplist/blockIp.conf', 'w') as config:
+    with open('geoblockIp_test.txt', 'r') as txt:
+        with open('./conf/sites-multiple/maplist/GeoIPMapListBlockIp.conf', 'w') as config:
             for line in txt:
-                config.write('deny %s;\n' % line.rstrip())
+                config.write('%s;\n' % line.rstrip())
 
     subprocess.call('nginx -s reload', shell=True)
 
