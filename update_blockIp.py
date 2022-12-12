@@ -33,7 +33,7 @@ def update_block_ip():
     with open('geoblockIp_test.txt', 'r') as txt:
         with open('./conf/sites-multiple/maplist/GeoIPMapListBlockIp.conf', 'w') as config:
             for line in txt:
-                config.write('%s;\n' % line.rstrip())
+                config.write('%s\n' % line.rstrip())
 
     subprocess.call('nginx -s reload', shell=True)
 
